@@ -12,6 +12,10 @@ python3 -m http.server 8090 --directory site
 
 Then visit http://localhost:8090.
 
+## Deploy
+
+`netlify.toml` tells Netlify to publish the `site/` folder. No build step runs on Netlify, so run the build locally and commit `site/` before pushing.
+
 ## Edit and rebuild
 
 Pages are generated from the files in `src/`:
