@@ -32,7 +32,7 @@ Pages are generated from the files in `src/`:
 python3 src/build.py
 ```
 
-The build writes the site to `site/` and then crawls it breadth-first from the homepage. It fails if any link is broken or any page can't be reached. The route table is saved to `site/_routes.txt`.
+The build writes the site to `site/` and then crawls it breadth-first from the homepage. It fails if any link is broken or any page can't be reached. The route table is saved to `routes.txt`.
 
 ## Before launch
 

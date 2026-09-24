@@ -555,7 +555,7 @@ def main():
 def crawl():
     """Breadth-first crawl from the homepage (unit-weight shortest paths, i.e. Dijkstra
     with every link costing 1). Verifies every link and asset resolves and every page
-    is reachable, and writes the route table to site/_routes.txt."""
+    is reachable, and writes the route table to routes.txt (outside the published site)."""
     all_pages = {p.relative_to(OUT).as_posix() for p in OUT.rglob("index.html")}
     dist, parent, broken = {"index.html": 0}, {"index.html": None}, []
     q = deque(["index.html"])
@@ -585,7 +585,7 @@ def crawl():
         route = "/" + t.replace("index.html", "")
         via = "/" + parent[t].replace("index.html", "") if parent[t] else "-"
         lines.append(f"{dist[t]:>4}  {route}  (via {via})")
-    (OUT / "_routes.txt").write_text("\n".join(lines) + "\n")
+    (OUT.parent / "routes.txt").write_text("\n".join(lines) + "\n")
 
     print(f"Crawled {len(dist)} reachable pages (max {max(dist.values())} hops from home).")
     if broken:

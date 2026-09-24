@@ -2,9 +2,3 @@
 [build]
   publish = "site"
   command = ""
-
-# Don't expose the internal route report.
-[[redirects]]
-  from = "/_routes.txt"
-  to = "/404.html"
-  status = 404
