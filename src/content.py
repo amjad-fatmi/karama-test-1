@@ -3,7 +3,7 @@
 Anything the Karama team still has to confirm is wrapped in <span class="todo">.
 Sample news posts carry a visible "sample" note until real stories replace them.
 """
-from components import ORG
+from components import ORG, PHONE
 
 T = lambda s: f'<span class="todo">{s}</span>'  # noqa: E731  marks a detail to fill in
 
@@ -33,7 +33,7 @@ PROGRAMS = [
 <dt>Intermediate</dt><dd>Everyday conversations, reading notices and letters, talking on the phone.</dd>
 <dt>Advanced</dt><dd>Work English, writing emails, job interviews, reading the news.</dd></dl>
 <h2>Class Details</h2>
-<dl><dt>Where</dt><dd>{ORG["address_1"]}</dd><dt>When</dt><dd>{T("Class schedule")}</dd><dt>Cost</dt><dd>Free, including books</dd></dl>
+<dl><dt>Where</dt><dd>{ORG["venue"]}</dd><dt>When</dt><dd>{T("Class schedule")}</dd><dt>Cost</dt><dd>Free, including books</dd></dl>
 <p><a class="btn solid" href="@/need-help/#intake">Sign Up for ESL</a></p>"""},
             {"slug": "adult-literacy", "label": "Adult Literacy", "img": "writing",
              "title": "Reading and Writing Basics",
@@ -188,10 +188,10 @@ PROGRAMS = [
              "title": "Visit the Food Pantry",
              "text": "Where, when and what to expect on your first visit.",
              "body": f"""<h2>Pantry Details</h2>
-<dl><dt>Where</dt><dd>{ORG["address_1"]}, {ORG["address_2"]}, {ORG["city"]}</dd><dt>When</dt><dd>{ORG["pantry_hours"]}</dd><dt>Phone</dt><dd>{ORG["phone"]}</dd></dl>
+<dl><dt>Where</dt><dd>{ORG["venue"]}</dd><dt>When</dt><dd>{ORG["pantry_hours"]}</dd><dt>Phone</dt><dd>{PHONE}</dd></dl>
 <h2>Your First Visit</h2>
 <ol><li>A volunteer will greet you at the door.</li><li>You may be asked a few simple questions for our records. {T("Confirm intake questions.")}</li><li>You'll choose groceries or receive a pre-packed box.</li><li>Bring bags if you have them.</li></ol>
-<p class="note">Can't come during open hours? Call us. We'll try to arrange a pickup time, especially for seniors and people with disabilities.</p>"""},
+<p class="note">Can't come during open hours? Call us at {PHONE}. We'll try to arrange a pickup time, especially for seniors and people with disabilities.</p>"""},
             {"slug": "donate-food", "label": "Donate Food", "img": "volunteers",
              "title": "Donate Food",
              "text": "What we need most and how to drop it off.",

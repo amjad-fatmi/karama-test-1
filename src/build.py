@@ -15,7 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import art  # noqa: E402
-from components import (ORG, CHEV_SM, accordions, acards, article_hero, featured, feature, footer, fwcta,  # noqa: E402
+from components import (ORG, PHONE, EMAIL, CHEV_SM, accordions, acards, article_hero, featured, feature, footer, fwcta,  # noqa: E402
                         header, home_hero, icp, img, landing_hero, mcards, rich, sec_head, secnav, section,
                         signup, single_stat, stats)
 from content import EVENTS, HERITAGE, NEWS, PROGRAMS, T  # noqa: E402
@@ -63,7 +63,7 @@ home += featured("Uniting for Action", "Together, we're creating opportunities s
                  {"href": u(f"news/{NEWS[4]['slug']}/"), "img": NEWS[4]["img"], "cat": "Community", "title": NEWS[4]["title"]},
                  [{"href": u(f"news/{n['slug']}/"), "img": n["img"], "cat": "Guide", "title": n["title"]} for n in (NEWS[1], NEWS[5])])
 home += signup()
-page("", "Karama | Dignity Through Opportunity",
+page("", "Karama Charities | Dignity Through Opportunity",
      "Karama is a nonprofit offering free English classes, financial literacy, immigration support, job training and a food pantry at Masjid Sabour.",
      home, cls="home")
 
@@ -85,7 +85,7 @@ body += mcards("Get Started", [
 body += fwcta("Every Gift Opens a Door", "Books, groceries, training supplies and more. Your support keeps every program free.",
               [("Donate", u("how-you-can-help/why-donate/make-a-gift/"), "yellow")])
 body += signup()
-page("our-impact/", "Our Impact | Karama", "Karama's five programs: English literacy, financial literacy, immigration support, vocational training and food pantry.", body, "Our Impact")
+page("our-impact/", "Our Impact | Karama Charities", "Karama's five programs: English literacy, financial literacy, immigration support, vocational training and food pantry.", body, "Our Impact")
 
 for p in PROGRAMS:
     base = f"our-impact/{p['slug']}/"
@@ -102,7 +102,7 @@ for p in PROGRAMS:
     body += fwcta("Ready to Get Started?", "It only takes a few minutes. Tell us what you need and a Karama team member will reach out.",
                   [("Sign Up", u("need-help/#intake"), "yellow"), ("Volunteer", u("how-you-can-help/why-volunteer/"), "white")])
     body += signup()
-    page(base, f"{p['label']} | Karama", p["text"], body, "Our Impact")
+    page(base, f"{p['label']} | Karama Charities", p["text"], body, "Our Impact")
 
     for s in p["subs"]:
         path = base + s["slug"] + "/"
@@ -115,7 +115,7 @@ for p in PROGRAMS:
                        + [("Back to " + p["label"], "See the full program overview.", u(base))],
                        cols=len(others) + 1 if len(others) + 1 in (2, 3, 4) else 3)
         body += signup()
-        page(path, f"{s['title']} | Karama", s["text"], body, "Our Impact")
+        page(path, f"{s['title']} | Karama Charities", s["text"], body, "Our Impact")
 
 
 # ================================================================== IN YOUR COMMUNITY
@@ -133,7 +133,7 @@ body += mcards("Explore", [
     ("Masjid Sabour", "Our home base, and a welcoming place for all.", u("in-your-community/masjid-sabour/")),
     ("Community Events", "Workshops, fairs, heritage nights and drives.", u("events/"))])
 body += signup()
-page("in-your-community/", "In Your Community | Karama", "Karama at Masjid Sabour: local needs, heritage months and community events.", body, "In Your Community")
+page("in-your-community/", "In Your Community | Karama Charities", "Karama at Masjid Sabour: local needs, heritage months and community events.", body, "In Your Community")
 
 body = landing_hero("Meeting Local Needs", "We listen first, then build programs around what neighbors tell us they need.", "volunteers",
                     eyebrow="In Your Community", crumbs=[("Home", u("")), ("In Your Community", u("in-your-community/"))])
@@ -146,7 +146,7 @@ body += single_stat("1", "simple intake form connects a family with every Karama
 body += mcards("Take the Next Step", [("Need Help?", "Tell us what you need.", u("need-help/")),
                                       ("Partner With Us", "Bring your organization to the table.", u("how-you-can-help/partner-with-us/")),
                                       ("Volunteer", "Lend a hand where it matters.", u("how-you-can-help/why-volunteer/"))])
-page("in-your-community/meeting-local-needs/", "Meeting Local Needs | Karama", "How Karama listens to neighbors and builds programs around real needs.", body, "In Your Community")
+page("in-your-community/meeting-local-needs/", "Meeting Local Needs | Karama Charities", "How Karama listens to neighbors and builds programs around real needs.", body, "In Your Community")
 
 months = "".join(f'<div class="month reveal"><div class="m">{m}</div><h3>{t}</h3><p>{d}</p></div>' for m, t, d in HERITAGE)
 body = landing_hero("Heritage Months", "Each month, we build an evening around a community in our area. Everyone is invited to learn, eat and celebrate together.",
@@ -157,17 +157,17 @@ body += section(sec_head("Our Heritage Calendar", "Dates are announced on the Ev
 body += fwcta("Want to Plan a Heritage Night?", "Tell us about your community and your idea. We'll help with space, promotion and volunteers.",
               [("Propose an Event", u("about/contact/"), "yellow")])
 body += signup()
-page("in-your-community/heritage-months/", "Heritage Months | Karama", "Karama's year-round calendar of heritage nights and community celebrations.", body, "In Your Community")
+page("in-your-community/heritage-months/", "Heritage Months | Karama Charities", "Karama's year-round calendar of heritage nights and community celebrations.", body, "In Your Community")
 
 body = landing_hero("Masjid Sabour", "Karama's home base, and a welcoming place for neighbors of every faith.", "masjid",
                     eyebrow="In Your Community", crumbs=[("Home", u("")), ("In Your Community", u("in-your-community/"))])
 body += secnav("In Your Community", comm_nav, u("in-your-community/masjid-sabour/"))
 body += rich(f"""<h2>Visit Us</h2>
-<dl><dt>Address</dt><dd>{ORG["address_1"]}<br>{ORG["address_2"]}<br>{ORG["city"]}</dd><dt>Pantry hours</dt><dd>{ORG["pantry_hours"]}</dd><dt>Office hours</dt><dd>{ORG["office_hours"]}</dd><dt>Phone</dt><dd>{ORG["phone"]}</dd></dl>
-<h2>Getting Here</h2><p>{T("Parking, bus lines and accessible entrance details.")}</p>
+<dl><dt>Pantry hours</dt><dd>{ORG["pantry_hours"]}</dd><dt>Office hours</dt><dd>{ORG["office_hours"]}</dd><dt>Phone</dt><dd>{PHONE}</dd><dt>Email</dt><dd>{EMAIL}</dd></dl>
+<p>Have a question before you visit? Call or email us and we'll help you plan.</p>
 <h2>Everyone Is Welcome</h2><p>You do not need to be Muslim to use any Karama program. Our volunteers are glad to explain anything about the building or its customs so that every guest feels comfortable.</p>""")
 body += signup()
-page("in-your-community/masjid-sabour/", "Masjid Sabour | Karama", "Visit Karama at Masjid Sabour: address, hours and directions.", body, "In Your Community")
+page("in-your-community/masjid-sabour/", "Masjid Sabour | Karama Charities", "Visit Karama at Masjid Sabour: hours and how to reach us.", body, "In Your Community")
 
 
 # ================================================================== EVENTS
@@ -193,7 +193,7 @@ body += section(sec_head("RSVP", "Let us know you're coming so we can plan food 
 <div><label for="rsvp-help">Can you volunteer?</label><select id="rsvp-help"><option>No, just attending</option><option>Yes, I can help</option></select></div>
 <div class="full"><button class="btn solid" type="submit">Send RSVP</button></div><div class="success" role="status">You're in! See you there.</div></div></form></div>""")
 body += signup()
-page("events/", "Events | Karama", "Upcoming Karama events: workshops, heritage nights, job fairs and food drives.", body, "In Your Community")
+page("events/", "Events | Karama Charities", "Upcoming Karama events: workshops, heritage nights, job fairs and food drives.", body, "In Your Community")
 
 
 # ================================================================== HOW YOU CAN HELP
@@ -213,7 +213,7 @@ body += mcards("Ways to Help", [
 body += feature("Zakat & Sadaqah", "Karama welcomes zakat and sadaqah. Gifts marked for the zakat fund go to eligible families.",
                 ("Learn More", u("how-you-can-help/why-donate/zakat-and-sadaqah/")), "heart", eyebrow="Faithful Giving", variant="yellow")
 body += signup()
-page("how-you-can-help/", "How You Can Help | Karama", "Donate, volunteer, partner, host a drive or speak out with Karama.", body, "How You Can Help")
+page("how-you-can-help/", "How You Can Help | Karama Charities", "Donate, volunteer, partner, host a drive or speak out with Karama.", body, "How You Can Help")
 
 donate_nav = [("Why Donate?", u("how-you-can-help/why-donate/")), ("Make a Gift", u("how-you-can-help/why-donate/make-a-gift/")),
               ("Zakat & Sadaqah", u("how-you-can-help/why-donate/zakat-and-sadaqah/")), ("Plan Your Gift", u("how-you-can-help/why-donate/plan-your-gift/"))]
@@ -227,7 +227,7 @@ body += rich("""<h2>Where Your Gift Goes</h2>
 body += mcards("Ways to Give", [(t, d, h) for (t, h), d in zip(donate_nav[1:], [
     "Give once or monthly online.", "Zakat and sadaqah for eligible families.", "Stock, estate and employer matching gifts."])])
 body += signup()
-page("how-you-can-help/why-donate/", "Why Donate? | Karama", "How your gift to Karama helps families in our community.", body, "How You Can Help")
+page("how-you-can-help/why-donate/", "Why Donate? | Karama Charities", "How your gift to Karama helps families in our community.", body, "How You Can Help")
 
 give_widget = """<form class="give" data-local><h3>Choose Your Gift</h3>
 <div class="seg" data-group="#gift-freq"><button type="button" aria-pressed="true" data-value="once">One-Time</button><button type="button" aria-pressed="false" data-value="monthly">Monthly</button></div>
@@ -244,12 +244,12 @@ body = landing_hero("Make a Gift", "Give once or every month. Every dollar helps
 body += secnav("Why Donate?", donate_nav, u("how-you-can-help/why-donate/make-a-gift/"))
 body += section(f"""<div class="give-layout"><div class="reveal"><h2>Give Today</h2>
 <p>Monthly gifts are especially helpful. They let us plan classes and stock the pantry ahead of time.</p>
-<h3>Other ways to give</h3><ul style="font-size:18px;line-height:28px"><li>Mail a check payable to Karama: {ORG["address_2"]}, {ORG["city"]}</li><li>Ask your employer to match your gift</li><li>Donate food or supplies: see <a href="@/our-impact/food-pantry/donate-food/">most-needed items</a></li></ul></div>{give_widget}</div>""")
+<h3>Other ways to give</h3><ul style="font-size:18px;line-height:28px"><li>Give by check: call {PHONE} or email {EMAIL} for mailing details</li><li>Ask your employer to match your gift</li><li>Donate food or supplies: see <a href="@/our-impact/food-pantry/donate-food/">most-needed items</a></li></ul></div>{give_widget}</div>""")
 body += accordions("Giving Questions", [
     ("Is my gift tax-deductible?", f"<p>Karama is a 501(c)(3) nonprofit ({ORG['ein']}). Gifts are tax-deductible to the extent allowed by law. You'll get a receipt by email.</p>"),
     ("Can I cancel a monthly gift?", "<p>Yes, at any time. Contact us and we'll take care of it.</p>"),
     ("Can I give in someone's honor?", "<p>Yes. Add a note with your gift and we'll send an acknowledgment if you'd like.</p>")])
-page("how-you-can-help/why-donate/make-a-gift/", "Make a Gift | Karama", "Donate to Karama once or monthly.", body, "How You Can Help")
+page("how-you-can-help/why-donate/make-a-gift/", "Make a Gift | Karama Charities", "Donate to Karama once or monthly.", body, "How You Can Help")
 
 body = landing_hero("Zakat & Sadaqah", "Faithful giving that reaches families in our own community.", "heart",
                     eyebrow="Why Donate?", crumbs=[("Home", u("")), ("How You Can Help", u("how-you-can-help/")), ("Why Donate?", u("how-you-can-help/why-donate/"))])
@@ -258,7 +258,7 @@ body += rich(f"""<h2>Zakat</h2><p>Gifts marked for Karama's zakat fund go to eli
 <h2>Sadaqah</h2><p>Sadaqah supports all of Karama's work: English classes, the food pantry, job training and more.</p>
 <p><a class="btn solid" href="@/how-you-can-help/why-donate/make-a-gift/">Give Zakat or Sadaqah</a></p>""")
 body += signup()
-page("how-you-can-help/why-donate/zakat-and-sadaqah/", "Zakat & Sadaqah | Karama", "Give zakat and sadaqah through Karama.", body, "How You Can Help")
+page("how-you-can-help/why-donate/zakat-and-sadaqah/", "Zakat & Sadaqah | Karama Charities", "Give zakat and sadaqah through Karama.", body, "How You Can Help")
 
 body = landing_hero("Plan Your Gift", "Stock gifts, estate gifts and employer matching can multiply your impact.", "family",
                     eyebrow="Why Donate?", crumbs=[("Home", u("")), ("How You Can Help", u("how-you-can-help/")), ("Why Donate?", u("how-you-can-help/why-donate/"))])
@@ -268,7 +268,7 @@ body += accordions("Ways to Plan a Gift", [
     ("Gifts of stock", f"<p>Giving stock can reduce taxes for you. {T('Add brokerage transfer details.')}</p>"),
     ("Gifts in your will", "<p>Name Karama in your will or as a beneficiary to leave a lasting legacy. Talk to your attorney, then let us know so we can thank you.</p>"),
     ("Questions?", '<p>Contact us through our <a href="@/about/contact/">contact page</a>.</p>')])
-page("how-you-can-help/why-donate/plan-your-gift/", "Plan Your Gift | Karama", "Planned giving options for Karama.", body, "How You Can Help")
+page("how-you-can-help/why-donate/plan-your-gift/", "Plan Your Gift | Karama Charities", "Planned giving options for Karama.", body, "How You Can Help")
 
 body = landing_hero("Why Volunteer?", "Share an hour, a skill or a language. You'll change a neighbor's week, and maybe your own.", "volunteers",
                     eyebrow="How You Can Help", crumbs=[("Home", u("")), ("How You Can Help", u("how-you-can-help/"))])
@@ -286,7 +286,7 @@ body += section(sec_head("Sign Up to Volunteer", "We'll contact you about traini
 <div class="full"><span class="fieldset-label">I'm interested in</span><div class="checks"><label><input type="checkbox"> ESL tutoring</label><label><input type="checkbox"> Food pantry</label><label><input type="checkbox"> Job coaching</label><label><input type="checkbox"> Interpreting</label><label><input type="checkbox"> Workshops</label><label><input type="checkbox"> Events</label></div></div>
 <div class="full"><label for="v-skills">Skills or languages</label><textarea id="v-skills" rows="3"></textarea></div>
 <div class="full"><button class="btn solid" type="submit">Sign Up</button></div><div class="success" role="status">Thank you! Our volunteer coordinator will be in touch.</div></div></form></div>""")
-page("how-you-can-help/why-volunteer/", "Why Volunteer? | Karama", "Volunteer with Karama as a tutor, pantry helper, job coach or interpreter.", body, "How You Can Help")
+page("how-you-can-help/why-volunteer/", "Why Volunteer? | Karama Charities", "Volunteer with Karama as a tutor, pantry helper, job coach or interpreter.", body, "How You Can Help")
 
 partner_nav = [("Partner With Us", u("how-you-can-help/partner-with-us/")), ("Partner Resources", u("how-you-can-help/partner-with-us/partner-resources/"))]
 body = landing_hero("Partner With Us", "Businesses, employers, schools, masjids, churches and nonprofits: let's build a stronger community together.", "partners",
@@ -299,7 +299,7 @@ body += accordions("Ways to Partner", [
     ("Offer space, supplies or expertise", "<p>Classrooms, computers, food, or professionals who can teach a workshop.</p>"),
     ("Refer families", "<p>Schools, clinics and caseworkers can refer families to any Karama program.</p>")])
 body += fwcta("Let's Talk", "Tell us about your organization and how you'd like to help.", [("Contact Us", u("about/contact/"), "yellow")])
-page("how-you-can-help/partner-with-us/", "Partner With Us | Karama", "Partner with Karama as an employer, sponsor or community organization.", body, "How You Can Help")
+page("how-you-can-help/partner-with-us/", "Partner With Us | Karama Charities", "Partner with Karama as an employer, sponsor or community organization.", body, "How You Can Help")
 
 body = landing_hero("Partner Resources", "Tools and information for Karama partners.", "partners",
                     eyebrow="Partner With Us", crumbs=[("Home", u("")), ("How You Can Help", u("how-you-can-help/")), ("Partner With Us", u("how-you-can-help/partner-with-us/"))])
@@ -309,14 +309,14 @@ body += accordions("Resources", [
     ("Logo and brand use", f"<p>Guidelines for using the Karama name and logo. {T('Add brand guide.')}</p>"),
     ("Sponsorship levels", f"<p>{T('Add sponsorship tiers and benefits.')}</p>"),
     ("Food donation guidelines", '<p>See <a href="@/our-impact/food-pantry/donate-food/">Donate Food</a> for accepted items.</p>')])
-page("how-you-can-help/partner-with-us/partner-resources/", "Partner Resources | Karama", "Resources for Karama partners.", body, "How You Can Help")
+page("how-you-can-help/partner-with-us/partner-resources/", "Partner Resources | Karama Charities", "Resources for Karama partners.", body, "How You Can Help")
 
 body = landing_hero("Host a Drive", "Rally your school, office or friends to collect food and supplies for families.", "volunteers",
                     eyebrow="How You Can Help", crumbs=[("Home", u("")), ("How You Can Help", u("how-you-can-help/"))])
 body += secnav("How You Can Help", help_nav, u("how-you-can-help/host-a-drive/"))
 body += rich("""<h2>How to Host a Drive</h2><ol><li><strong>Pick a focus:</strong> food, winter coats, school supplies, baby items or hygiene kits.</li><li><strong>Set a goal and a date.</strong> One to two weeks works well.</li><li><strong>Share the list.</strong> Use our <a href="@/our-impact/food-pantry/donate-food/">most-needed items</a>.</li><li><strong>Schedule a drop-off</strong> through our <a href="@/about/contact/">contact page</a>.</li></ol>""")
 body += signup()
-page("how-you-can-help/host-a-drive/", "Host a Drive | Karama", "Host a food or supply drive for Karama.", body, "How You Can Help")
+page("how-you-can-help/host-a-drive/", "Host a Drive | Karama Charities", "Host a food or supply drive for Karama.", body, "How You Can Help")
 
 body = landing_hero("Speak Out", "Your voice can help build a community where everyone has a fair start.", "community",
                     eyebrow="How You Can Help", crumbs=[("Home", u("")), ("How You Can Help", u("how-you-can-help/"))])
@@ -324,7 +324,7 @@ body += secnav("How You Can Help", help_nav, u("how-you-can-help/speak-out/"))
 body += rich("""<h2>Ways to Speak Up</h2><ul><li>Share Karama's programs with a family who could use them.</li><li>Tell local leaders why adult English classes, job training and food security matter.</li><li>Follow us on social media and share our posts.</li><li>Invite Karama to speak at your school, workplace or place of worship.</li></ul>
 <p class="note">Karama is a nonpartisan nonprofit and does not support or oppose candidates for office.</p>""")
 body += signup()
-page("how-you-can-help/speak-out/", "Speak Out | Karama", "Raise your voice for newcomers, fair opportunity and food security.", body, "How You Can Help")
+page("how-you-can-help/speak-out/", "Speak Out | Karama Charities", "Raise your voice for newcomers, fair opportunity and food security.", body, "How You Can Help")
 
 
 # ================================================================== NEED HELP (the "211" equivalent)
@@ -353,7 +353,7 @@ body += section(sec_head("Tell Us What You Need", "A Karama team member will con
 <p class="form-note full">We keep your information private and only use it to contact you about Karama services. We do not ask about immigration status for food or classes.</p>
 <div class="full"><button class="btn solid" type="submit">Send</button></div><div class="success" role="status">Thank you! We received your request and will reach out soon.</div></div></form></div>""")
 body += section(f'<div class="reveal" style="max-width:900px;margin:0 auto"><h2>In an Emergency</h2><p>If you or someone else is in danger, call <strong>911</strong>. For help finding local services any time, dial <strong>211</strong>. For a mental health crisis, call or text <strong>988</strong>.</p></div>', "sec single-stat")
-page("need-help/", "Need Help? | Karama", "Get free help from Karama: food, English classes, money help, immigration information and job training.", body, "Need Help")
+page("need-help/", "Need Help? | Karama Charities", "Get free help from Karama: food, English classes, money help, immigration information and job training.", body, "Need Help")
 
 
 # ================================================================== NEWS
@@ -368,7 +368,7 @@ body += section(f"""<div class="news-filter"><div><label for="nf-cat">Category</
 <ul class="news-list" id="news-list" data-filter-list>{items}</ul><p class="empty" data-empty-for="news-list" hidden>No stories match. Try another word.</p>""")
 body += mcards("More From Karama", [("Events", "See what's coming up.", u("events/")), ("Need Help?", "Find free services.", u("need-help/")),
                                     ("Get Involved", "Donate, volunteer or partner.", u("how-you-can-help/"))])
-page("news/", "News | Karama", "Karama news, announcements and guides.", body)
+page("news/", "News | Karama Charities", "Karama news, announcements and guides.", body)
 
 for i, n in enumerate(NEWS):
     note = (f'<p class="note"><strong>Sample post.</strong> {T("Replace with a real Karama story before launch.")}</p>' if n["sample"] else "")
@@ -378,7 +378,7 @@ for i, n in enumerate(NEWS):
     others = [x for x in NEWS if x is not n][:3]
     body += acards("More Stories", [{"href": u(f"news/{x['slug']}/"), "img": x["img"], "cat": x["cat"], "title": x["title"]} for x in others],
                    btn=("All News", u("news/")))
-    page(f"news/{n['slug']}/", f"{n['title']} | Karama", n["desc"], body)
+    page(f"news/{n['slug']}/", f"{n['title']} | Karama Charities", n["desc"], body)
 
 
 # ================================================================== ABOUT
@@ -387,20 +387,20 @@ about_nav = [("About", u("about/")), ("Our History", u("about/our-history/")), (
 body = landing_hero("About Karama", "<em>Karama</em> (كرامة) means dignity. We help every neighbor build a secure, independent life.",
                     "masjid", eyebrow="Who We Are", crumbs=[("Home", u(""))])
 body += secnav("About", about_nav, u("about/"))
-body += rich(f"""<p>Karama is a nonprofit based at {ORG["address_1"]}. We offer free English and literacy classes, financial literacy workshops, immigration information and referrals, vocational training and a community food pantry. We also host events that celebrate the many cultures in our neighborhood.</p>
+body += rich(f"""<p>Karama Charities is a nonprofit based at {ORG["venue"]}. We offer free English and literacy classes, financial literacy workshops, immigration information and referrals, vocational training and a community food pantry. We also host events that celebrate the many cultures in our neighborhood.</p>
 <p>Our work is powered by volunteers, donors and partners who believe that opportunity should be open to everyone.</p>""")
 body += mcards("Learn More", [(t, d, h) for (t, h), d in zip(about_nav[1:], [
     "How Karama began.", "What we believe and how we work.", "The people who guide Karama.", "Financials and annual reports.", "Visit, call or write."])],
     cols=3)
 body += signup()
-page("about/", "About | Karama", "About Karama: our mission, history, leadership and contact information.", body)
+page("about/", "About | Karama Charities", "About Karama: our mission, history, leadership and contact information.", body)
 
 body = landing_hero("Our History", "How a few neighbors at Masjid Sabour started something bigger.", "masjid",
                     eyebrow="About", crumbs=[("Home", u("")), ("About", u("about/"))])
 body += secnav("About", about_nav, u("about/our-history/"))
 body += rich(f"""<p>{T("Tell Karama's founding story in a few short paragraphs: who started it, when and why.")}</p>
 <ol class="timeline"><li><div class="yr">{T("Year")}</div><p>Karama is founded at Masjid Sabour.</p></li><li><div class="yr">{T("Year")}</div><p>Food pantry opens.</p></li><li><div class="yr">{T("Year")}</div><p>First ESL classes begin.</p></li><li><div class="yr">{T("Year")}</div><p>Financial literacy and job training programs launch.</p></li></ol>""")
-page("about/our-history/", "Our History | Karama", "The story of Karama.", body)
+page("about/our-history/", "Our History | Karama Charities", "The story of Karama.", body)
 
 body = landing_hero("Our Mission and Values", "Why we exist and how we treat every person who walks through our doors.", "community",
                     eyebrow="About", crumbs=[("Home", u("")), ("About", u("about/"))])
@@ -410,7 +410,7 @@ body += mcards("Our Values", [("Dignity", "We serve with respect. No one should 
                               ("Welcome", "Every faith, culture and language belongs here.", "#main"),
                               ("Self-Reliance", "We build skills that last, not dependence.", "#main"),
                               ("Trust", "We protect people's privacy and are honest about what we can do.", "#main")], cols=4)
-page("about/our-mission-and-values/", "Our Mission and Values | Karama", "Karama's mission and values.", body)
+page("about/our-mission-and-values/", "Our Mission and Values | Karama Charities", "Karama's mission and values.", body)
 
 people = "".join(f'<div class="person reveal"><div class="ph">{art.portrait(i)}</div><h3>{T("Name")}</h3><p>{r}</p></div>'
                  for i, r in enumerate(["Executive Director", "Board Chair", "Programs Director", "Pantry Coordinator", "Board Treasurer", "Board Secretary", "Volunteer Coordinator", "Board Member"]))
@@ -418,26 +418,26 @@ body = landing_hero("Our Leadership", "The staff and board members who guide Kar
                     eyebrow="About", crumbs=[("Home", u("")), ("About", u("about/"))])
 body += secnav("About", about_nav, u("about/leadership-team/"))
 body += section(sec_head("Board & Staff", T("Add names, photos and short bios.")) + f'<div class="people">{people}</div>')
-page("about/leadership-team/", "Our Leadership | Karama", "Karama's staff and board.", body)
+page("about/leadership-team/", "Our Leadership | Karama Charities", "Karama's staff and board.", body)
 
 body = landing_hero("Public Reporting", "We believe in being open about how we use every gift.", None,
                     eyebrow="About", crumbs=[("Home", u("")), ("About", u("about/"))])
 body += secnav("About", about_nav, u("about/public-reporting/"))
 body += rich(f"""<h2>Financials</h2><ul><li>IRS determination letter: {T("link")}</li><li>Form 990: {T("link")}</li><li>Annual report: {T("link")}</li><li>Audited financial statements: {T("link, if applicable")}</li></ul>""")
-page("about/public-reporting/", "Public Reporting | Karama", "Karama financial reports and public documents.", body)
+page("about/public-reporting/", "Public Reporting | Karama Charities", "Karama financial reports and public documents.", body)
 
 body = landing_hero("Contact", "Questions, partnerships, media or event ideas. We'd love to hear from you.", None,
                     eyebrow="About", crumbs=[("Home", u("")), ("About", u("about/"))])
 body += secnav("About", about_nav, u("about/contact/"))
-body += section(f"""<div class="give-layout"><div class="reveal"><h2>Visit or Call</h2><div class="rich" style="padding:0"><dl>
-<dt>Address</dt><dd>{ORG["address_1"]}<br>{ORG["address_2"]}<br>{ORG["city"]}</dd><dt>Phone</dt><dd>{ORG["phone"]}</dd><dt>Email</dt><dd>{ORG["email"]}</dd><dt>Office</dt><dd>{ORG["office_hours"]}</dd></dl></div>
+body += section(f"""<div class="give-layout"><div class="reveal"><h2>Call or Email</h2><div class="rich" style="padding:0"><dl>
+<dt>Phone</dt><dd>{PHONE}</dd><dt>Email</dt><dd>{EMAIL}</dd><dt>Website</dt><dd>{ORG["domain"]}</dd><dt>Office</dt><dd>{ORG["office_hours"]}</dd></dl></div>
 <p>Need a service? Use our <a href="@/need-help/#intake">Need Help form</a> instead so the right person gets back to you.</p></div>
 <form class="give" data-local><h3>Send a Message</h3>
 <label for="c-name">Name</label><input id="c-name" required autocomplete="name"><label for="c-email">Email or phone</label><input id="c-email" required>
 <label for="c-topic">Topic</label><select id="c-topic"><option>General question</option><option>Partnership</option><option>Media</option><option>Propose an event</option><option>Food drop-off</option></select>
 <label for="c-msg">Message</label><textarea id="c-msg" rows="5" required style="width:100%;border:2px solid var(--line);border-radius:12px;padding:12px 16px;font:inherit;margin-bottom:14px"></textarea>
 <button class="btn solid" type="submit">Send Message</button><div class="success" role="status">Thanks for reaching out! We'll reply soon.</div></form></div>""")
-page("about/contact/", "Contact | Karama", "Contact Karama at Masjid Sabour.", body)
+page("about/contact/", "Contact | Karama Charities", "Contact Karama Charities by phone or email.", body)
 
 body = landing_hero("Frequently Asked Questions", "Quick answers about Karama's programs and services.", None,
                     eyebrow="About", crumbs=[("Home", u("")), ("About", u("about/"))])
@@ -448,19 +448,19 @@ body += accordions("", [
     ("What languages do you speak?", "<p>Our volunteers speak English, Arabic and often other languages. Tell us your language and we'll try to match you.</p>"),
     ("Do you give legal advice?", '<p>No. We share general information and refer people to licensed attorneys and accredited representatives. See <a href="@/our-impact/immigration-support/legal-referrals/">Legal Referrals</a>.</p>'),
     ("How can I help?", '<p>Donate, volunteer, partner or host a drive. Start at <a href="@/how-you-can-help/">How You Can Help</a>.</p>'),
-    ("Where are you located?", f"<p>{ORG['address_1']}, {ORG['address_2']}, {ORG['city']}.</p>")])
-page("about/frequently-asked-questions/", "FAQ | Karama", "Frequently asked questions about Karama.", body)
+    ("How can I reach you?", f"<p>Call {PHONE} or email {EMAIL}.</p>")])
+page("about/frequently-asked-questions/", "FAQ | Karama Charities", "Frequently asked questions about Karama.", body)
 
 body = landing_hero("Careers at Karama", "Join a team that puts dignity first.", "volunteers", eyebrow="About", crumbs=[("Home", u("")), ("About", u("about/"))])
 body += rich(f"""<h2>Open Positions</h2><p>{T("List open roles, or keep this note:")} There are no open staff positions right now. We're always looking for <a href="@/how-you-can-help/why-volunteer/">volunteers</a>.</p>
 <p>Karama is an equal opportunity employer.</p>""")
-page("about/careers/", "Careers | Karama", "Jobs at Karama.", body)
+page("about/careers/", "Careers | Karama Charities", "Jobs at Karama.", body)
 
 for slug, title, text in [
     ("privacy-policy", "Privacy Policy", f"""<p>Karama respects your privacy. We collect only the information you choose to give us, such as your name and contact details when you fill out a form, and we use it only to respond to you and provide services.</p><p>We do not sell your information. We do not ask about immigration status for food, classes or events.</p><p>{T("Have this policy reviewed before launch.")}</p>"""),
     ("terms", "Terms of Use", f"""<p>Information on this website is for general education and is not legal, tax or financial advice. Links to other websites are provided for convenience.</p><p>{T("Have these terms reviewed before launch.")}</p>"""),
     ("accessibility", "Accessibility", """<p>Karama wants everyone to be able to use this website. We aim to meet WCAG 2.1 AA guidelines, with readable text, keyboard navigation and screen-reader labels.</p><p>If something doesn't work for you, please <a href="@/about/contact/">contact us</a> and we'll help.</p>""")]:
-    page(f"about/{slug}/", f"{title} | Karama", f"Karama {title.lower()}.",
+    page(f"about/{slug}/", f"{title} | Karama Charities", f"Karama {title.lower()}.",
          landing_hero(title, "", None, eyebrow="About", crumbs=[("Home", u("")), ("About", u("about/"))]) + rich(text))
 
 
@@ -469,7 +469,7 @@ body = landing_hero("Search", "Find programs, pages and guides across the Karama
 body += section("""<form action="." method="get" role="search" style="display:flex;gap:12px;max-width:760px"><label class="sr" for="search-q">Search</label>
 <input id="search-q" name="q" type="search" style="flex:1;height:54px;border-radius:40px;border:2px solid var(--blue);padding:0 22px;font:inherit;font-size:18px">
 <button class="btn solid" type="submit" style="min-height:54px">Search</button></form><p id="search-count" style="margin-top:20px"></p><ul class="results" id="search-results" data-base="../"></ul>""")
-page("search/", "Search | Karama", "Search the Karama website.", body, cls="search")
+page("search/", "Search | Karama Charities", "Search the Karama website.", body, cls="search")
 
 
 def build_sitemap():
@@ -508,12 +508,16 @@ def rel_href(target, cur_dir):
     return r + (("?" + query) if query else "") + (("#" + frag) if frag else "")
 
 
+SITE_URL = "https://karamacharities.com/"
+
+
 def render(p):
     cur_dir = p["path"].rstrip("/") or "."
+    canon = SITE_URL + p["path"]
     html = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{escape(p["title"])}</title><meta name="description" content="{escape(p["desc"])}">
-<link rel="icon" href="@/img/favicon.svg" type="image/svg+xml">{FONTS}<link rel="stylesheet" href="@/assets/site.css"></head>
+<link rel="icon" href="@/img/karama-logo.png" type="image/png"><link rel="apple-touch-icon" href="@/img/karama-logo.png"><link rel="canonical" href="{canon}"><meta property="og:site_name" content="Karama Charities"><meta property="og:title" content="{escape(p["title"])}"><meta property="og:description" content="{escape(p["desc"])}"><meta property="og:url" content="{canon}"><meta property="og:image" content="https://karamacharities.com/img/karama-logo.png">{FONTS}<link rel="stylesheet" href="@/assets/site.css"></head>
 <body class="{p["cls"]}">{header(p["top"])}<main id="main">{p["body"]}</main>{footer()}
 {('<script src="@/assets/search-index.js"></script>' if p["cls"] == "search" else "")}<script src="@/assets/site.js"></script></body></html>"""
     return re.sub(r'@/([^"\'\s<>]*)', lambda m: rel_href(m.group(1), cur_dir), html)
@@ -524,9 +528,9 @@ def strip_tags(s):
 
 
 def main():
-    page("sitemap/", "Site Map | Karama", "Every page on the Karama website.",
+    page("sitemap/", "Site Map | Karama Charities", "Every page on the Karama website.",
          landing_hero("Site Map", "Every page on the Karama website.", None, crumbs=[("Home", u(""))]) + section(build_sitemap()))
-    page("404/", "Page Not Found | Karama", "Page not found.", body404)
+    page("404/", "Page Not Found | Karama Charities", "Page not found.", body404)
 
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -534,6 +538,7 @@ def main():
     (OUT / "img").mkdir()
     shutil.copy(SRC / "assets/site.css", OUT / "assets/site.css")
     shutil.copy(SRC / "assets/site.js", OUT / "assets/site.js")
+    shutil.copy(SRC / "assets/karama-logo.png", OUT / "img/karama-logo.png")
     for name, fn in art.SCENES.items():
         (OUT / "img" / f"{name}.svg").write_text(fn())
     (OUT / "img/favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><circle cx="40" cy="40" r="38" fill="#0044b5"/><path d="M40 14c6 10 16 15 24 15-2 18-12 30-24 36-12-6-22-18-24-36 8 0 18-5 24-15z" fill="#ffba00"/></svg>')
@@ -547,6 +552,9 @@ def main():
             index.append({"t": p["title"].split(" | ")[0], "u": (p["path"] + "index.html") if p["path"] else "index.html",
                           "d": p["desc"], "k": strip_tags(p["body"])[:1500]})
     (OUT / "404.html").write_text((OUT / "404/index.html").read_text().replace('href="../', 'href="').replace('src="../', 'src="'))
+    urls = "".join(f"<url><loc>{SITE_URL}{p['path']}</loc></url>" for p in PAGES if p["path"] not in ("404/", "search/"))
+    (OUT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>')
+    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n")
     (OUT / "assets/search-index.js").write_text("window.KARAMA_INDEX=" + json.dumps(index, ensure_ascii=False) + ";")
     print(f"Built {len(PAGES)} pages into {OUT}")
     return crawl()

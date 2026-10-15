@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://karamacharities.com/sitemap.xml

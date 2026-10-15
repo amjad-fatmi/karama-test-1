@@ -8,36 +8,34 @@ from html import escape
 IMG_EXT = "svg"  # switch to "jpg" once real photos are dropped into site/img/
 
 ORG = {
-    "name": "Karama",
+    "name": "Karama Charities",
+    "short": "Karama",
     "tagline": "Dignity Through Opportunity",
-    "address_1": "Masjid Sabour",
-    "address_2": '<span class="todo">Street address</span>',
-    "city": '<span class="todo">City, State ZIP</span>',
-    "phone": '<span class="todo">(000) 000-0000</span>',
-    "email": '<span class="todo">info@karama.org</span>',
+    "domain": "karamacharities.com",
+    "venue": "Masjid Sabour",
+    "phone": "+1 (702) 695-9150",
+    "phone_href": "tel:+17026959150",
+    "email": "info@karamacharities.com",
     "pantry_hours": '<span class="todo">Pantry days and hours</span>',
     "office_hours": '<span class="todo">Office hours</span>',
     "ein": '<span class="todo">EIN</span>',
 }
 
+PHONE = f'<a href="{ORG["phone_href"]}">{ORG["phone"]}</a>'
+EMAIL = f'<a href="mailto:{ORG["email"]}">{ORG["email"]}</a>'
+
 CHEV = '<svg class="chev" aria-hidden="true" viewBox="0 0 13 22"><path d="M9 11 .4 2.4A1.4 1.4 0 0 1 2.4.4L12.9 11 2.4 21.4a1.4 1.4 0 0 1-2-2Z"/></svg>'
 CHEV_SM = '<svg aria-hidden="true" viewBox="0 0 13 22"><path d="M9 11 .4 2.4A1.4 1.4 0 0 1 2.4.4L12.9 11 2.4 21.4a1.4 1.4 0 0 1-2-2Z"/></svg>'
 
-LOGO_MARK = """<svg class="mark" viewBox="0 0 80 80" aria-hidden="true">
-<circle cx="40" cy="40" r="38" fill="#fff" stroke="#fad42f" stroke-width="4"/>
-<path d="M40 12c6 10 16 15 24 15-2 18-12 30-24 36-12-6-22-18-24-36 8 0 18-5 24-15z" fill="#0044b5"/>
-<path d="M40 25c3.5 5.5 9 8.5 14 8.5-1.2 10-7 17-14 20-7-3-12.8-10-14-20 5 0 10.5-3 14-8.5z" fill="#ffba00"/>
-<path d="M22 60c10 7 26 7 36 0" stroke="#21296b" stroke-width="4" fill="none" stroke-linecap="round"/>
-</svg>"""
 
 
 def img(name, alt=""):
     return f'<img src="@/img/{name}.{IMG_EXT}" alt="{escape(alt)}" loading="lazy">'
 
 
-def logo(tag="a"):
-    return (f'<a class="logo" href="@/" aria-label="Karama home">{LOGO_MARK}'
-            f'<span class="word">Karama<small>{ORG["tagline"]}</small></span></a>')
+def logo(where="header"):
+    return (f'<a class="logo logo-{where}" href="@/" aria-label="Karama Charities home">'
+            f'<img src="@/img/karama-logo.png" alt="Karama Charities" width="540" height="462"></a>')
 
 
 # ---------------------------------------------------------------- navigation data
@@ -168,12 +166,12 @@ def footer():
     cols = "".join(f'<div class="col"><h2>{h}</h2>{link_list(links)}</div>' for h, links in FOOTER_COLS)
     social = "".join(f'<a href="#" aria-label="{n} (link coming soon)"><svg viewBox="0 0 24 24">{p}</svg></a>' for n, p in SOCIAL.items())
     return f"""<footer class="site-footer"><div class="inner">
-  <div class="top">{logo()}<div class="social"><span>Follow us</span>{social}</div></div>
+  <div class="top">{logo("footer")}<div class="social"><span>Follow us</span>{social}</div></div>
   <div class="cols">
-    <div><address><p>Karama<br>at {ORG["address_1"]}</p><p>{ORG["address_2"]}<br>{ORG["city"]}</p><p>{ORG["phone"]}<br>{ORG["email"]}</p></address></div>
+    <div class="contact"><h2>Contact Us</h2><p>Karama Charities</p><p>{PHONE}<br>{EMAIL}</p><p><a href="@/">{ORG["domain"]}</a></p></div>
     {cols}
   </div>
-  <div class="legal"><span>&copy; <span data-year>2026</span> Karama. A 501(c)(3) nonprofit organization, {ORG["ein"]}.</span>
+  <div class="legal"><span>&copy; <span data-year>2026</span> Karama Charities. A 501(c)(3) nonprofit organization, {ORG["ein"]}.</span>
     <span><a href="@/about/privacy-policy/">Privacy Policy</a><a href="@/about/terms/">Terms</a><a href="@/about/accessibility/">Accessibility</a></span></div>
 </div></footer>"""
 

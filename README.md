@@ -36,7 +36,7 @@ The build writes the site to `site/` and then crawls it breadth-first from the h
 
 ## Before launch
 
-- Fill in everything highlighted in yellow on the site: address, hours, phone, email, EIN, staff and class times.
+- Fill in everything highlighted in yellow on the site: pantry and office hours, EIN, staff and class times. (The site intentionally shows no street address.)
 - Replace the sample news posts and event dates.
 - Connect the forms and donations to real services. Right now they only show a thank-you message.
 - Swap the placeholder illustrations for real photos in `site/img/` and set `IMG_EXT` in `src/components.py`.
